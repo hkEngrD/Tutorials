@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<launch>
+   
+    <!-- Use the empty_world.launch as a base and load create.world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find gazebotutorials)/create.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+    <!-- Spawn the pioneer 3dx -->
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"
+        args="-sdf -file $(find gazebotutorials)/model-1_4.sdf -x 0 -y 0 -z 0 -model pioneer3dx" />
+</launch>
